@@ -10,7 +10,7 @@ jobs:
       - name: checkout repository
         uses: actions/checkout@v4
       - name: XXX teste creation nouveau fichier
-        run: README.md > Q1_archive_README.md 
+        run: cp README.md Q1_archive_README.md 
     # push
       - name: XXX commmit et push
         run: |
