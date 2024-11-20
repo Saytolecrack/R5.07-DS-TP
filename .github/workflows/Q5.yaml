@@ -1,0 +1,43 @@
+name: Q5 workflow
+run-name:   Q5 Workflow
+on: [push]
+permissions: 
+  contents: write
+jobs: 
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v4
+      - name: Copy Q4.java to Q5.java
+        run: |
+          cp Q4.java Q5.java
+          sed -i 's/class Q4/class Q5/' Q5.java
+      - name: XXX teste creation nouveau fichier
+        run: |
+          TIMESTAMP=$(date '+%d-%m-%Y') # Format de la date JJ-MM-AAAA
+          FILENAME="Q5_archive_$TIMESTAMP.txt"
+          echo "Nom : Sacha Baltide" > $FILENAME
+          echo "" >> $FILENAME
+          echo "Contenu de Q5.java :" >> $FILENAME
+          cat Q5.java >> $FILENAME
+          echo "Fichier créé : $FILENAME"
+    # push
+      - name: ajout du nom du user
+        run: |
+          git config --global user.name Saytolecrack
+      - name: ajout du mail du user
+        run: |
+          git config --global user.email sachat.baltide@etu.univ-lehavre.fr
+      - name: ajout de l archive dans github
+        run: |
+          git add Q5_archive_*.txt
+      - name: pull le repository pour eviter les conflits
+        run: |
+          git pull
+      - name: commit
+        run: | 
+          git commit -m "Add Q5 archive avec contenu mis a jour"
+      - name: push l archive dans le repository
+        run: |
+           git push
