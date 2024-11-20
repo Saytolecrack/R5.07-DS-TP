@@ -1,0 +1,34 @@
+name: Q2 workflow
+run-name:   Q2 Workflow
+on: [push]
+permissions: 
+  contents: write
+jobs: 
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v4
+      - name: XXX teste creation nouveau fichier
+        run: |
+          echo "Nom : Sacha Baltide" > Q2_archive_README.md
+          echo "Date et heure d'exécution : $(date '+%Y-%m-%d %H:%M:%S')" >> Q2_archive_README.md
+          echo "" >> Q2_archive_README.md
+          echo "Contenu de README.md :" >> Q2_archive_README.md
+          cat README.md >> Q2_archive_README.md
+    # push
+      - name: ajout du nom du user
+        run: |
+          git config --global user.name Saytolecrack
+      - name: ajout du mail du user
+        run: |
+          git config --global user.email sachat.baltide@etu.univ-lehavre.fr
+      - name: ajout de l archive dans github
+        run: |
+          git add Q1_archive_README.md 
+      - name: verification et commit si necessaire
+        run: |
+          git commit -m "test push de Q1_archive_README.md "
+      - name: push l archive dans le repository
+        run: |
+           git push
