@@ -1,5 +1,5 @@
 name: Q1 workflow
-run-name:   GitHub Rapport 🚀
+run-name:   Q1 Workflow
 on: [push]
 permissions: 
   contents: write
