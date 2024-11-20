@@ -24,6 +24,9 @@ jobs:
       - name: ajout de l archive dans github
         run: |
           git add Q3_archive_java.txt
+      - name: pull le repository pour eviter les conflits
+        run: |
+          git pull
       - name: commit
         run: | 
           git commit -m "Add Q3_archive_java.txt avec contenu mis a jour"
