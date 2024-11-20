@@ -12,8 +12,8 @@ jobs:
       - name: XXX teste creation nouveau fichier
         run: |
           echo "Nom : Sacha Baltide" > Q3_archive_java.txt
-          echo "Contenu de Q3.java :" >> Q2_archive_README.md
-          cat Q3.java >> Q2_archive_README.md
+          echo "Contenu de Q3.java :" >> Q3_archive_java.txt
+          cat Q3.java >> Q3_archive_java.txt
     # push
       - name: ajout du nom du user
         run: |
