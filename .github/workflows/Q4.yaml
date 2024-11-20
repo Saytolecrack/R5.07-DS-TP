@@ -11,9 +11,13 @@ jobs:
         uses: actions/checkout@v4
       - name: XXX teste creation nouveau fichier
         run: |
-          echo "Nom : Sacha Baltide" > Q4_archive_java.txt
-          echo "Contenu de Q4.java :" >> Q4_archive_java.txt
-          cat Q4.java >> Q4_archive_java.txt
+          TIMESTAMP=$(date '+%d-%m-%Y') # Format de la date JJ-MM-AAAA
+          FILENAME="Q4_archive_$TIMESTAMP.txt"
+          echo "Nom : Sacha Baltide" > $FILENAME
+          echo "" >> $FILENAME
+          echo "Contenu de Q4.java :" >> $FILENAME
+          cat Q4.java >> $FILENAME
+          echo "Fichier créé : $FILENAME"
     # push
       - name: ajout du nom du user
         run: |
@@ -23,13 +27,13 @@ jobs:
           git config --global user.email sachat.baltide@etu.univ-lehavre.fr
       - name: ajout de l archive dans github
         run: |
-          git add Q4_archive_java.txt
+          git add Q4_archive_*.txt
       - name: pull le repository pour eviter les conflits
         run: |
           git pull
       - name: commit
         run: | 
-          git commit -m "Add Q4_archive_java.txt avec contenu mis a jour"
+          git commit -m "Add Q4 archive avec contenu mis a jour"
       - name: push l archive dans le repository
         run: |
            git push
