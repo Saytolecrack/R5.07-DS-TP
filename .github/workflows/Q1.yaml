@@ -21,6 +21,9 @@ jobs:
       - name: ajout de l archive dans github
         run: |
           git add Q1_archive_README.md 
+      - name: commit
+        run: | 
+          git commit -m "Add Q1_archive_README.md avec contenu mis a jour"
       - name: push l archive dans le repository
         run: |
            git push
